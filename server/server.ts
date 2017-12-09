@@ -41,21 +41,93 @@ server.get('/health', function (req, res, next) {
 
 server.get('/api/feedback', function (req, res, next) {
     const log = req.log;
-    //log.debug('get feedback list');
-    //log.debug({ headers: req.headers }, 'req.Headers:');
-    log.debug({ params: req.params }, 'req.params:');
-    
-    res.json(200, { 'status': 'success' });
-    //return next();
+    /*
+    //  tested - OK
+    Feedback.find(function (err, data) {
+        if (!err) {
+            log.debug(`found: ${data.length}`);
+            res.json(data);
+            return next();
+        } else {
+            res.statusCode = 500;
+            log.error( { err: err }, `${res.statusCode} ${err.name} '${err.message}'` );
+            res.json({
+                type: 'Server error, after DB call.',
+                error: err
+            });
+            return next(err);
+        }
+    });
+    */
+    Feedback.find().
+        then(data => {
+            log.debug(`Feedback found: ${data.length}`);
+            res.json(data);
+            return next();
+        })
+        .catch(err => {
+            log.error({ err: err }, `${res.statusCode} ${err.name} '${err.message}'`);
+            return next(err);
+        });
+
 });
 
 server.post('/api/feedback', function (req, res, next) {
     const log = req.log;
     log.debug({ body: req.body }, 'request.body:');
-    log.debug({ params: req.params }, 'req.params:');
-    
-    res.json(200, { 'status': 'success' });
-    //return next();
+
+    let {
+        hostName,
+        comment,
+        communication,
+        atmosphere,
+        valueForMoney
+    } = JSON.parse(req.body);
+    //} = req.body;
+
+    let feedback = new Feedback({
+        hostName,
+        comment,
+        communication,
+        atmosphere,
+        valueForMoney
+    });
+
+    /*
+    //  tested - OK
+    feedback.save(function (err) {
+        if (!err) {
+            log.info(`Feedback created with id: ${feedback.id}`);
+            res.json(201, { 'data': feedback });
+            return next();
+        }
+        //  error processing
+        log.error(`${err.name} '${err.message}'`);
+        //log.error({ err: err }, 'error:');
+        if (err.name === 'ValidationError') {
+            res.send(400, err);
+            return next();
+        }
+        return next(err);
+    });
+    */
+
+    feedback.save()
+        .then(data => {
+            log.info(`Feedback created with id: ${data.id}`);
+            res.json(201, { 'data': data });
+            return next();
+        })
+        .catch(err => {
+            log.error(`${err.name} '${err.message}'`);
+            //log.error({ err: err }, 'error:');
+            if (err.name === 'ValidationError') {
+                res.send(400, err);
+                return next();
+            }
+            return next(err);
+        });
+
 });
 
 /**
