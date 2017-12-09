@@ -1,5 +1,9 @@
 import * as restify from 'restify';
 import * as bunyan from 'bunyan';
+import { config } from './config';
+import { connect } from './db/mongoose';
+import Feedback from './db/Feedback';
+
 
 const logServer = bunyan.createLogger({
     name: 'log',
@@ -17,6 +21,8 @@ server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser({ mapParams: true }));
 server.use(restify.plugins.bodyParser({ mapParams: true }));
 
+const dbConnection = connect(server.log);
+
 /**
  * Request handling before routing.
  * Note that req.params will be undefined, as that's filled in after routing.
@@ -24,7 +30,6 @@ server.use(restify.plugins.bodyParser({ mapParams: true }));
 server.pre(function (req, res, next) {
     const log = req.log;
     log.info(`${req.method.toUpperCase()} ${req.url}`);
-    //log.debug({ headers: req.headers }, 'req.Headers:');
     next();
 });
 
@@ -57,13 +62,10 @@ server.post('/api/feedback', function (req, res, next) {
  * Mapping static resources
  */
 server.get('/', restify.plugins.serveStatic({
-    //directory: './public',
     directory: './dist',
     file: 'index.html'
 }));
-//server.get(/\/public\/?.*/, restify.plugins.serveStatic({
 server.get(/\/.*/, restify.plugins.serveStatic({
-    //directory: __dirname, // C:\Users\alex\Documents\_repos\_tests\comeat\server\build
     directory: './dist',
     default: 'index.html'
 }));
@@ -71,7 +73,7 @@ server.get(/\/.*/, restify.plugins.serveStatic({
 /**
  * Starting server
  */
-const cfgPort = 8000; //config.get('port') || 8000;
+const cfgPort = config.get('server:port') || 8000;
 server.listen(cfgPort, function () {
     logServer.info('%s listening at %s', server.name, server.url);
 });
