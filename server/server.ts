@@ -41,26 +41,8 @@ server.get('/health', function (req, res, next) {
 
 server.get('/api/feedback', function (req, res, next) {
     const log = req.log;
-    /*
-    //  tested - OK
-    Feedback.find(function (err, data) {
-        if (!err) {
-            log.debug(`found: ${data.length}`);
-            res.json(data);
-            return next();
-        } else {
-            res.statusCode = 500;
-            log.error( { err: err }, `${res.statusCode} ${err.name} '${err.message}'` );
-            res.json({
-                type: 'Server error, after DB call.',
-                error: err
-            });
-            return next(err);
-        }
-    });
-    */
-    Feedback.find().
-        then(data => {
+    Feedback.find()
+        .then(data => {
             log.debug(`Feedback found: ${data.length}`);
             res.json(data);
             return next();
@@ -69,7 +51,6 @@ server.get('/api/feedback', function (req, res, next) {
             log.error({ err: err }, `${res.statusCode} ${err.name} '${err.message}'`);
             return next(err);
         });
-
 });
 
 server.post('/api/feedback', function (req, res, next) {
@@ -93,25 +74,6 @@ server.post('/api/feedback', function (req, res, next) {
         valueForMoney
     });
 
-    /*
-    //  tested - OK
-    feedback.save(function (err) {
-        if (!err) {
-            log.info(`Feedback created with id: ${feedback.id}`);
-            res.json(201, { 'data': feedback });
-            return next();
-        }
-        //  error processing
-        log.error(`${err.name} '${err.message}'`);
-        //log.error({ err: err }, 'error:');
-        if (err.name === 'ValidationError') {
-            res.send(400, err);
-            return next();
-        }
-        return next(err);
-    });
-    */
-
     feedback.save()
         .then(data => {
             log.info(`Feedback created with id: ${data.id}`);
@@ -127,7 +89,6 @@ server.post('/api/feedback', function (req, res, next) {
             }
             return next(err);
         });
-
 });
 
 /**
