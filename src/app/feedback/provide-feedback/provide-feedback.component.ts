@@ -20,17 +20,17 @@ export class ProvideFeedbackComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         console.log('model:', this.model);
-        
+
         this.http
             .post('/api/feedback', this.model)
             .subscribe(
-                data => {
-                    this.saved = true;
-                },
-                err => {
-                    console.error('Saving data failed.', err);
-                    this.submitted = false;
-                }
+            data => {
+                this.saved = true;
+            },
+            err => {
+                console.error('Saving data failed.', err);
+                this.submitted = false;
+            }
             );
     }
 

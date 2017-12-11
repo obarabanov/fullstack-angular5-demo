@@ -1,3 +1,27 @@
-<p>
-  received-feedback works!
-</p>
+<div class="container">
+    <br/>
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Feedback list</h3>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div>
+            <button class="btn" (click)="refresh()">Refresh</button>
+        </div>
+    </div>
+
+    <ul>
+        <li *ngFor="let f of feedbackList">
+            host: <strong>{{f.hostName | uppercase}}</strong>
+            <br/>
+            communication: <span class="badge">{{ f.communication }}</span>
+            atmosphere: <span class="badge">{{ f.atmosphere }}</span>
+            value for money: <span class="badge">{{ f.valueForMoney }}</span>
+            <br/>
+            {{f.comment}}
+            <hr>
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,64 @@
+[
+    {
+        "hostName": "hgfjfh",
+        "comment": "46756457",
+        "communication": 3,
+        "atmosphere": 3,
+        "valueForMoney": 3,
+        "_id": "5a2c24c7d026ad15240c6dbc",
+        "__v": 0
+    },
+    {
+        "hostName": "jhgfhgfj",
+        "comment": "reyttreyer",
+        "communication": 4,
+        "atmosphere": 3,
+        "valueForMoney": 8,
+        "_id": "5a2c26c1c0fb901f5cc4f01a",
+        "__v": 0
+    },
+    {
+        "hostName": "erytre",
+        "communication": 2,
+        "atmosphere": 3,
+        "valueForMoney": 4,
+        "_id": "5a2c2e8ea8e1a623e47973ca",
+        "__v": 0
+    },
+    {
+        "hostName": "treytre",
+        "comment": "tryetry",
+        "communication": 3,
+        "atmosphere": 9,
+        "valueForMoney": 6,
+        "_id": "5a2c3299ef816606ccdfbb12",
+        "__v": 0
+    },
+    {
+        "hostName": "gfhhgf",
+        "comment": "hfjhgfj",
+        "communication": 2,
+        "atmosphere": 3,
+        "valueForMoney": 4,
+        "_id": "5a2e65d921c4e412b85ebe2a",
+        "__v": 0
+    },
+    {
+        "hostName": "John Smith",
+        "comment": "This was created from test.",
+        "communication": 7,
+        "atmosphere": 8,
+        "valueForMoney": 9,
+        "_id": "5a2e6e32575af21d508e6450",
+        "__v": 0
+    },
+    {
+        "hostName": "John Smith",
+        "comment": "This was created from test.",
+        "communication": 7,
+        "atmosphere": 8,
+        "valueForMoney": 9,
+        "_id": "5a2e6f1c32029b1ee80ecfc7",
+        "__v": 0
+    }
+]
