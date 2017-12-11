@@ -1,41 +1,40 @@
 <div class="container" [hidden]="submitted">
-    <h3>Please provide your feedback</h3>
-    <form #feedbackForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="host">Host Name</label>
-            <input type="text" class="form-control" id="host" required
-                [(ngModel)]="model.hostName" name="hostName">
-        </div>
-        <div class="form-group">
-            <label for="communication">Communication</label>
-            <input type="range" class="form-control" id="communication" required min="1" max="10"
-                [(ngModel)]="model.communication" name="communication">
-        </div>
-        <div class="form-group">
-            <label for="atmosphere">Atmosphere</label>
-            <input type="range" class="form-control" id="atmosphere" required min="1" max="10"
-                [(ngModel)]="model.atmosphere" name="atmosphere">
-        </div>
-        <div class="form-group">
-            <label for="valueForMoney">Value for money</label>
-            <input type="range" class="form-control" id="valueForMoney" required min="1" max="10"
-                [(ngModel)]="model.valueForMoney" name="valueForMoney">
-        </div>
-        <div class="form-group">
-            <label for="comment">Comment</label>
-            <textarea id="comment" rows="5" cols="50" class="form-control"
-                [(ngModel)]="model.comment" name="comment"></textarea>
-        </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
 
-        <button type="submit" class="btn btn-success" [disabled]="!feedbackForm.form.valid">Submit</button>
+            <h3>Please provide your feedback</h3>
+            <form #feedbackForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="host">Host Name</label>
+                    <input type="text" class="form-control" id="host" required [(ngModel)]="model.hostName" name="hostName">
+                </div>
+                <div class="form-group">
+                    <label for="communication">Communication</label>
+                    <input type="range" class="form-control" id="communication" required min="1" max="10" [(ngModel)]="model.communication" name="communication">
+                </div>
+                <div class="form-group">
+                    <label for="atmosphere">Atmosphere</label>
+                    <input type="range" class="form-control" id="atmosphere" required min="1" max="10" [(ngModel)]="model.atmosphere" name="atmosphere">
+                </div>
+                <div class="form-group">
+                    <label for="valueForMoney">Value for money</label>
+                    <input type="range" class="form-control" id="valueForMoney" required min="1" max="10" [(ngModel)]="model.valueForMoney" name="valueForMoney">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" rows="5" cols="50" class="form-control" [(ngModel)]="model.comment" name="comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!feedbackForm.form.valid">Submit</button>
+            </form>
 
-    </form>
+        </div>
+    </div>
 </div>
 
 <div class="container" [hidden]="!saved">
-    <br/><br/>
-    Saved.
+    <br/>
+    <br/> Saved - OK
+    <br/>
     <br/>
     <button class="btn btn-success" (click)="newFeedback()">Give more feedback</button>
 </div>
-    
