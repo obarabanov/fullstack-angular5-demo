@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "compile": "node_modules/.bin/tsc -p server/tsconfig.server.json",
     "start": "node_modules/.bin/nodemon ./server/build/server.js | bunyan",
     "test": "_mocha ./server/build/test/integration.test.js | bunyan",
     "test:ui": "ng test",

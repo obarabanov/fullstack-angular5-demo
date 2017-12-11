@@ -1,4 +1,33 @@
-# Comeat
+# How to run
+
+## MongoDB configuration
+
+Before running the app, be sure you've got MongoDB running and accessible.
+
+Any MongoDB configs other than ```localhost``` and it's default port of ```27017```, have to be properly configured by connection url in ```config.json``` file. Also, you can change app's database name.
+
+## Running the app
+
+To run fullstack app:
+```
+npm i
+npm run build
+npm run compile
+npm start
+```
+
+Then, go to http://localhost:8000 in your browser.
+
+Port number can be re-configured in ```config.json``` file.
+
+## Testing
+
+To run server-side integration tests:
+```
+npm test
+```
+
+## Angular client-side app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
