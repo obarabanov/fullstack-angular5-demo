@@ -21,7 +21,6 @@ export class ReceivedFeedbackComponent implements OnInit {
         this.feedbackList = [];
         this.http
             .get('/api/feedback')
-            //.get('assets/test.json')
             .subscribe(
             data => {
                 console.log('data', data);
