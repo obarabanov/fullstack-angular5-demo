@@ -12,7 +12,7 @@ const logServer = bunyan.createLogger({
 });
 
 export const server = restify.createServer({
-    name: 'REST APIs',
+    name: 'Demo Server',
     log: logServer,
     version: '1.0.0'
 });
@@ -63,8 +63,7 @@ server.post('/api/feedback', function (req, res, next) {
         communication,
         atmosphere,
         valueForMoney
-    } = JSON.parse(req.body);
-    //} = req.body;
+    } = req.body;
 
     let feedback = new Feedback({
         hostName,
