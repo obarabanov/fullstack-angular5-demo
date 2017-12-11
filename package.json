@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node_modules/.bin/nodemon ./server/build/server.js | bunyan",
-    "test": "ng test",
+    "test": "_mocha ./server/build/test/integration.test.js | bunyan",
+    "test:ui": "ng test",
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",
