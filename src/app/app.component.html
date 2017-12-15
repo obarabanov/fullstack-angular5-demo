@@ -1,14 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h3>
-    Feedback demo
+    {{ title }}
   </h3>
 </div>
 
 <nav>
     <a routerLink="/">Home</a>
-    <a routerLink="/feedback/all">All received feedback</a>
-    <a routerLink="/feedback/give">Give feedback</a>
+    <a routerLink="/feedback/all" routerLinkActive="active">All received feedback</a>
+    <a routerLink="/feedback/give" routerLinkActive="active">Give feedback</a>
 </nav>
 <router-outlet></router-outlet>
 
