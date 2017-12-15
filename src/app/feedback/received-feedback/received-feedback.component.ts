@@ -25,7 +25,7 @@ export class ReceivedFeedbackComponent implements OnInit {
             data => {
                 console.log('data', data);
                 this.feedbackList = data as Feedback[];
-                console.log('Feedback[]', this.feedbackList);
+                //console.log('Feedback[]', this.feedbackList);
             },
             err => {
                 console.error('Getting data failed.', err);
