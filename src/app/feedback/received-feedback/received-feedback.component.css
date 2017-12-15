@@ -1,5 +1,13 @@
+ul {
+    padding-left: 0;
+}
+
 ul li {
     list-style-type: none;
+    padding: 10px 10px 10px 10px;
+}
+ul li:nth-child(even) {
+    background-color: rgb(240, 248, 255);
 }
 
 .row h3 {
