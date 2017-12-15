@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ReceivedFeedbackComponent } from './received-feedback.component';
 
 describe('ReceivedFeedbackComponent', () => {
@@ -8,7 +8,8 @@ describe('ReceivedFeedbackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReceivedFeedbackComponent ]
+      declarations: [ ReceivedFeedbackComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
